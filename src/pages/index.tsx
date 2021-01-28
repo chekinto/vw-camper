@@ -1,7 +1,14 @@
 import React from "react"
+import { HeaderScripts } from '../components/constants'
 
 const Home = () => {
-  return <div>VW Camper</div>
+  return (
+    <>
+      <HeaderScripts
+        pageMeta={{ title: 'Home', description: 'Home page' }}
+      />
+    </>
+  )
 }
 
 export default Home

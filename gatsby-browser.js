@@ -1,14 +1,12 @@
 import React from 'react'
-import { Layout } from './src/components/constants'
 import { GlobalStyles } from './src/styles/global'
+import { Layout } from './src/components/constants'
 
 export const wrapRootElement = ({ element }) => {
   return (
     <>
       <GlobalStyles />
-      <Layout>
-        {element}
-      </Layout>
+      <Layout>{element}</Layout>
     </>
   )
 }
