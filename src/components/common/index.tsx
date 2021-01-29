@@ -1,5 +1,6 @@
 export * from './button'
 export * from './divider'
+export * from './icon'
 export * from './pricing-card'
 export * from './section'
 export * from './service-card'

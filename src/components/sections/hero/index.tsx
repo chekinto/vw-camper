@@ -38,6 +38,7 @@ const HeroInner = styled.div`
     }
 
     p {
+      font-size: 2rem;
       margin-bottom: 2.4rem;
     }
 

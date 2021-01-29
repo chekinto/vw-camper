@@ -27,14 +27,12 @@ const BusSpec = styled.article`
       margin-bottom: 1.6rem;
     }
     p {
-      font-size: 1.4rem;
-      text-align: justify;
+      text-align: initial;
       margin-bottom: 1.6rem;
     }
   }
 
   .buses__btn {
-    font-size: 1.4rem;
     display: block;
     margin: 0 auto;
   }

@@ -2,7 +2,8 @@ import React, { FunctionComponent } from 'react'
 import styled from 'styled-components';
 
 const StyledServiceCard = styled.article`
-  padding: 7.2rem auto;
+  padding: 7.2rem 4.2rem;
+  background-color: grey;
 
   h4 {
     text-align: center;
@@ -21,3 +22,4 @@ export const ServiceCard: FunctionComponent<ServiceCardProps> = ({ bgImage, titl
     </StyledServiceCard>
   )
 }
+``

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link } from 'gatsby'
-import styled from 'styled-components';
+import styled from 'styled-components'
+import { Icon } from 'components/common'
 import { Container } from 'components/constants'
 import {
   navigationLinks,
@@ -10,7 +11,7 @@ import {
 
 const StyledFooter = styled.footer`
   background-color: var(--secondary);
-  padding: 9.6rem 0 4.8rem;
+  padding: 4.8rem 0;
 
   .footer__logo {
     color: var(--white);
@@ -33,16 +34,15 @@ const NavList = styled.ul`
     font-size: 1.6rem;
     margin-bottom: 1.6rem;
   }
+
+  li {
+    margin-bottom: 1.6rem;
+  }
 `
 
 const SocialIcons = styled.div`
   display: flex;
   gap: 2.4rem;
-
-  .footer__social-icons {
-    width: 2.4rem;
-    height: 2.4rem;
-  }
 `
 
 export const Footer = () => {
@@ -63,7 +63,7 @@ export const Footer = () => {
           <NavList>
             <h5>Terms & conditions</h5>
             {termsAndConditions.map(link => (
-              <li>
+              <li key={link.title}>
                 <Link to={link.path}>{link.title}</Link>
               </li>
             ))}
@@ -71,13 +71,13 @@ export const Footer = () => {
 
           <NavList>
             <h5>Find us</h5>
-            {findUs.map(link => (
-              <SocialIcons>
+            <SocialIcons>
+              {findUs.map(link => (
                 <a href={link.path}>
-                  <img src={link.icon} className="footer__social-icons" />
+                  <Icon src={link.icon} size={3.4} />
                 </a>
-              </SocialIcons>
-            ))}
+              ))}
+            </SocialIcons>
           </NavList>
         </FooterInner>
       </Container>

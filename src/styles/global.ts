@@ -105,8 +105,9 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: var(--poppins);
+    font-family: var(---poppins);
   }
+
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--rubik);
@@ -129,6 +130,7 @@ export const GlobalStyles = createGlobalStyle`
 
   p {
     font-size: 1.6rem;
+    line-height: 150%;
   }
 
   li {
@@ -150,7 +152,7 @@ export const GlobalStyles = createGlobalStyle`
 
   @media(max-width: ${variables.breakpoints.desktop}) {
     h1 {
-      font-size: 3.2rem;
+      font-size: 4rem;
     }
 
     h2 {

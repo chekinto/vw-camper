@@ -9,6 +9,7 @@ const StyledTitleBanner = styled.div`
 
   h2 {
     margin-bottom: 0.8rem;
+    font-size: 2.6rem;
     
     @media(min-width: ${variables.breakpoints.tablet}) {
       margin-bottom: 1.6rem;

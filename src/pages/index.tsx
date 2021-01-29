@@ -1,10 +1,11 @@
 import React from "react"
 import styled from 'styled-components';
-import { Container, HeaderScripts } from 'components/constants'
-import { Button, PricingCard, ServiceCard, Section, TitleBanner } from 'components/common'
+import { Container, Flex, HeaderScripts } from 'components/constants'
+import { Button, Divider, Icon, PricingCard, ServiceCard, Section, TitleBanner } from 'components/common'
+import { Input, TextArea } from 'components/forms'
 import { Hero } from 'components/sections/hero'
 import { MeetTheBuses } from 'components/sections/meet-the-buses'
-import { services, pricing } from 'features'
+import { services, pricing, whatsIncluded, optionalExtras } from 'features'
 
 export const Banner = styled.div`
   background-color: var(--primary);
@@ -35,7 +36,7 @@ const Home = () => {
 
       <MeetTheBuses />
 
-      <Section>
+      <Section id="#services">
         <Container>
           <TitleBanner
             title="Services"
@@ -51,7 +52,7 @@ const Home = () => {
         </Container>
       </Section>
 
-      <Section>
+      <Section id="#our-story">
         <Container>
           <TitleBanner
             title="Our story"
@@ -63,7 +64,7 @@ const Home = () => {
         </Container>
       </Section>
 
-      <Section>
+      <Section id="#pricing">
         <Container>
           <TitleBanner
             title="Pricing"
@@ -75,15 +76,39 @@ const Home = () => {
               season={price.season}
             />
           ))}
+
+          <h3>Whats included?</h3>
+          {whatsIncluded.map(item => (
+            <Flex gap={0.8}>
+              <Icon src={item.icon} fill="red" />
+              <span>{item.content}</span>
+            </Flex>
+          ))}
+
+          <Divider />
+
+          <h3>Optional extras</h3>
+          {optionalExtras.map(item => (
+            <Flex gap={0.8}>
+              <Icon src={item.icon} fill="red" />
+              <span>{item.content}</span>
+            </Flex>
+          ))}
         </Container>
       </Section>
 
-
-      <Section>
+      <Section id="#contact">
         <Container>
           <TitleBanner
             title="Let's chat"
           />
+          <form>
+            <Input type="text" label="Name" value={''} name="name" required />
+            <Input type="text" label="Email" value={''} name="email" required />
+            <Input type="text" label="Telephone" value={''} name="telephone" />
+            <TextArea id="" label="Message" name="message" />
+            <Button fullWidth type="submit">Submit</Button>
+          </form>
         </Container>
       </Section>
 
