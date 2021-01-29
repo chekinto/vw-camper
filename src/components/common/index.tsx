@@ -1,1 +1,6 @@
 export * from './button'
+export * from './divider'
+export * from './pricing-card'
+export * from './section'
+export * from './service-card'
+export * from './title-banner'

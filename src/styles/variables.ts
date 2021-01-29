@@ -1,8 +1,8 @@
 export const variables = {
   breakpoints: {
-    mobile: `(min-width: 576px)`,
-    tablet: `(min-width: 768px)`,
-    desktop: `(min-width: 992px)`,
-    desktopLg: `(min-width: 1200px)`,
+    mobile: `576px`,
+    tablet: `768px`,
+    desktop: `992px`,
+    desktopLg: `1200px`,
   }
 }
