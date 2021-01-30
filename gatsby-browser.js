@@ -2,11 +2,12 @@ import React from 'react'
 import { GlobalStyles } from './src/styles/global'
 import { Layout } from './src/components/constants'
 
-export const wrapRootElement = ({ element }) => {
+export const wrapPageElement = ({ element, props }) => {
+  console.log('props :>> ', props);
   return (
     <>
       <GlobalStyles />
-      <Layout>{element}</Layout>
+      <Layout {...props}>{element}</Layout>
     </>
   )
 }

@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components';
-
+import { formatPrice } from 'helpers'
 const StyledPricingCard = styled.article`
   border-radius: 0.8rem;
   overflow: hidden;
@@ -40,11 +40,13 @@ const Bottom = styled.div`
 interface PricingCardProps {
   title: string;
   season: string;
-  period?: string;
-  price?: number;
+  type: {
+    period: string;
+    price: number;
+  }[]
 }
 
-export const PricingCard: FunctionComponent<PricingCardProps> = ({ title, season, period, price }) => {
+export const PricingCard: FunctionComponent<PricingCardProps> = ({ title, season, type }) => {
   return (
     <StyledPricingCard>
       <Top>
@@ -52,10 +54,12 @@ export const PricingCard: FunctionComponent<PricingCardProps> = ({ title, season
         <p>{season}</p>
       </Top>
       <Bottom>
-        <div className="pricing">
-          <span>{period}</span>
-          <span>{price}</span>
-        </div>
+        {type.map(t => (
+          <div className="pricing">
+            <span>{t.period}</span>
+            <span>{formatPrice(t.price)}</span>
+          </div>
+        ))}
       </Bottom>
     </StyledPricingCard>
   )

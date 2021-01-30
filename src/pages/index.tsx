@@ -43,12 +43,14 @@ const Home = () => {
             subtitle="Whether it's for adventurous family holidays, outdoor sports, bird watching trips, festivals or just to get away from it all - VW Camper van is the place to get exactly what you need. For more information click here"
           />
 
-          {services.map(service => (
-            <ServiceCard
-              title={service.title}
-              bgImage={service.bgImage}
-            />
-          ))}
+          <Flex direction="column">
+            {services.map(service => (
+              <ServiceCard
+                title={service.title}
+                bgImage={service.bgImage}
+              />
+            ))}
+          </Flex>
         </Container>
       </Section>
 
@@ -71,10 +73,7 @@ const Home = () => {
             subtitle="All prices per day are subject to VAT"
           />
           {pricing.map(price => (
-            <PricingCard
-              title={price.title}
-              season={price.season}
-            />
+            <PricingCard {...price} />
           ))}
 
           <h3>Whats included?</h3>

@@ -105,7 +105,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: var(---poppins);
+    font-family: var(--poppins);
   }
 
 
@@ -120,7 +120,7 @@ export const GlobalStyles = createGlobalStyle`
   }
   
   h2 {
-    font-size: 3.2rem;
+    font-size: 4rem;
     letter-spacing: -0.025rem;
   }
 
@@ -156,7 +156,7 @@ export const GlobalStyles = createGlobalStyle`
     }
 
     h2 {
-      font-size: 2rem;
+      font-size: 3.2rem;
     }
   }
 
