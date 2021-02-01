@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import { variables } from 'styles/variables'
 
 const StyledTitleBanner = styled.div`
+  margin-bottom: 2.4rem;
   h2, p {
     text-align: center;
   }

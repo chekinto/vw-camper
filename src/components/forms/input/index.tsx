@@ -7,11 +7,11 @@ const StyledInput = styled.input`
   display: block;
   width: 100%;
   border-radius: 0.4rem;
-  border: 1px solid var(--grey2);
+  border: 1px solid var(--grey3);
   outline: none;
   padding: 0 1.6rem; 
   appearance: none;
-  font-family: var(--poppins);
+  font-family: var(--wotfard);
   font-size: 1.6rem;
 
   &:focus {
@@ -26,6 +26,7 @@ interface InputProps {
   label?: string;
   name?: string;
   required?: boolean;
+  onChange: (e) => void;
 }
 
 export const Input: FunctionComponent<InputProps> = ({
@@ -34,7 +35,8 @@ export const Input: FunctionComponent<InputProps> = ({
   value,
   label,
   name,
-  required }) => {
+  required = false,
+  onChange }) => {
   return (
     <>
       {label ? (
@@ -45,6 +47,7 @@ export const Input: FunctionComponent<InputProps> = ({
             name={name}
             value={value}
             required={required}
+            onChange={onChange}
           />
         </Label>
       ) : (
@@ -54,6 +57,7 @@ export const Input: FunctionComponent<InputProps> = ({
             name={name}
             value={value}
             required={required}
+            onChange={onChange}
           />
         )}
     </>

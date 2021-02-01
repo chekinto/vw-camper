@@ -1,17 +1,19 @@
 import React, { FunctionComponent } from 'react'
 import styled from 'styled-components';
 import { formatPrice } from 'helpers'
+
 const StyledPricingCard = styled.article`
   border-radius: 0.8rem;
   overflow: hidden;
-
+  width: 100%;
+  box-shadow: var(--shadow);
 `;
 
 const Top = styled.div`
-  padding: 2.4rem 0 2.4rem;
+  padding: 2.4rem 0;
   background-color:var(--primary);
-  color: var(--white);
   text-align: center;
+  color: var(--white);
 
   h5 {
     font-size: 1.8rem;
@@ -23,16 +25,18 @@ const Top = styled.div`
 `;
 
 const Bottom = styled.div`
-  padding: 3.2rem;
-  background-color:#f4f5f6;
-
+  padding: 2.4rem;
   .pricing {
     display: flex;
     justify-content: space-between;
-
-    span {
-      color: var(--white);
-      font-size: 1.6rem;
+    margin-bottom: 1.6rem;
+    h5 {
+      font-size: 1.8rem;
+    }
+    p {
+      color: var(--black);
+      font-size: 1.8rem;
+      font-weight: var(--fontWeight-bold);
     }
   }
 `;
@@ -56,8 +60,8 @@ export const PricingCard: FunctionComponent<PricingCardProps> = ({ title, season
       <Bottom>
         {type.map(t => (
           <div className="pricing">
-            <span>{t.period}</span>
-            <span>{formatPrice(t.price)}</span>
+            <h5>{t.period}</h5>
+            <p>{formatPrice(t.price)}</p>
           </div>
         ))}
       </Bottom>

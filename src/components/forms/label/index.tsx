@@ -6,7 +6,7 @@ export const StyledLabel = styled.label`
   flex-direction: column;
   margin-bottom: 2.4rem;
   span {
-    font-family: var(--poppins);
+    font-family: var(--wotfard);
     font-size: 1.6rem;
     font-weight: var(--semiBold);
     margin-bottom: 1.6rem;
@@ -22,7 +22,7 @@ interface LabelProps {
 export const Label: FunctionComponent<LabelProps> = ({ children, htmlFor, label }) => {
   return (
     <StyledLabel htmlFor={htmlFor}>
-      <span>{label}:</span>
+      <span>{label}</span>
       {children}
     </StyledLabel>
   )

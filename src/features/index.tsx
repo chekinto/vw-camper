@@ -31,16 +31,16 @@ export const services = [
     bgImage: camping
   },
   {
-    title: 'Other',
-    bgImage: other
-  },
-  {
     title: 'Parties & Proms',
     bgImage: parties
   },
   {
     title: 'Wedding',
     bgImage: wedding
+  },
+  {
+    title: 'Other',
+    bgImage: other
   },
 ]
 

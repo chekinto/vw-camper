@@ -15,11 +15,12 @@ interface IconProps {
   width?: number;
   height?: number;
   fill?: string;
+  alt?: string;
 }
 
-export const Icon: FunctionComponent<IconProps> = ({ src, fill, width, height }): JSX.Element => {
+export const Icon: FunctionComponent<IconProps> = ({ src, fill, width, height, alt }): JSX.Element => {
   return (
-    <StyledIcon>
+    <StyledIcon alt={alt}>
       <SVG src={src} width={width} height={height} fill={fill} />
     </StyledIcon>
   )

@@ -7,10 +7,11 @@ const StyledButton = styled.button<ButtonProps>`
   box-sizing: border-box;
   background-color: var(--primary);
   color: var(--white);
-  font-weight: var(--bold);
-  padding: 1.6em 2.4em;
+  font-weight: var(--fontWeight-bold);
+  padding: 1.6rem 2.4rem;
   text-transform: uppercase;
   width: 21.8rem;
+  cursor: pointer;
 
   ${({ secondary }) => secondary && css`
     background-color: var(--secondary);
@@ -34,11 +35,13 @@ interface ButtonProps {
   secondary?: boolean;
   navBtn?: boolean;
   fullWidth?: boolean;
+  onClick?: () => void;
 }
 
 export const Button: FunctionComponent<ButtonProps> = ({
   children,
   type = 'button',
+  onClick,
   navBtn,
   className,
   secondary,
@@ -46,6 +49,7 @@ export const Button: FunctionComponent<ButtonProps> = ({
 }) => {
   return (
     <StyledButton
+      onClick={onClick}
       type={type}
       navBtn={navBtn}
       className={className}

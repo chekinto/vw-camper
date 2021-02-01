@@ -6,6 +6,7 @@ import { buses } from 'features'
 
 const MeetBusesSection = styled.section`
   padding: 4rem 0 6.4rem;
+  background-color: var(--grey2);
 `;
 
 const BusSpec = styled.article`
@@ -47,12 +48,11 @@ export const MeetTheBuses = () => {
           title="Meet the buses"
           subtitle="We have 2 lovingly restored classic T5 Volkswagen Campervans with a cool modern twist. Our buses were restored and are maintained by Voodoo Works in Bulkington."
         />
-
         {buses.map((bus, index) => (
           <>
-            <BusSpec>
+            <BusSpec key={index}>
               <div className="buses__image">
-                <img src={bus.image} alt="" />
+                <img src={bus.image} alt={`image of a VW Camper ${bus.title}`} />
               </div>
 
               <div className="buses__content">
@@ -61,12 +61,9 @@ export const MeetTheBuses = () => {
                 <Button className="buses__btn">{bus.buttonText}</Button>
               </div>
             </BusSpec>
-            {index < buses.length - 1 && (
-              <Divider />
-            )}
+            {index < buses.length - 1 && (<Divider />)}
           </>
         ))}
-
       </Container>
     </MeetBusesSection>
   )

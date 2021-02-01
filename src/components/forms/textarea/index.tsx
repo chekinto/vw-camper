@@ -10,7 +10,7 @@ const StyledTextArea = styled.textarea`
   outline: none;
   padding: 1.6rem; 
   appearance: none;
-  font-family: var(--poppins);
+  font-family: var(--wotfard);
   font-size: 1.6rem;
 
   &:focus {
@@ -19,9 +19,11 @@ const StyledTextArea = styled.textarea`
 `;
 
 interface TextAreaProps {
-  id: string;
+  id?: string;
   label: string;
   name: string;
+  value: string;
+  onChange: (e) => void;
 }
 
 export const TextArea: FunctionComponent<TextAreaProps> = ({ id, label, name }) => {

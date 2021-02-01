@@ -1,5 +1,5 @@
 import React from 'react'
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { Section } from 'components/common/section'
 import { Button } from 'components/common'
 import { Container } from 'components/constants'
@@ -7,8 +7,20 @@ import camperVan from 'assets/images/vw-camper.png'
 import blob from 'assets/icons/hero-blob.svg'
 import { variables } from 'styles/variables'
 
+const slideIn = keyframes`
+  0% {
+    opacity: 0;
+    transform: translateY(-1rem);
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+`
+
 const HeroSection = styled(Section)`
-  padding: 9.6rem 0 7.2rem;
+  padding: 18rem 0 7.2rem;
 `;
 
 const HeroInner = styled.div`
@@ -18,6 +30,7 @@ const HeroInner = styled.div`
     display: grid;
     place-items: center;
     margin-bottom: 1.6rem;
+    animation: 1s ${slideIn} ease-in;
     img {
       height: 14.8rem;
       object-fit: contain;
@@ -35,11 +48,13 @@ const HeroInner = styled.div`
 
     h1 {
       margin-bottom: 1.6rem;
+      animation: 1s ${slideIn} ease-in 0.3s;
     }
 
     p {
       font-size: 2rem;
       margin-bottom: 2.4rem;
+      animation: 1s ${slideIn} ease-in;
     }
 
     .hero__btn {

@@ -2,73 +2,37 @@ import { createGlobalStyle } from 'styled-components';
 import { variables } from 'styles/variables'
 
 export const GlobalStyles = createGlobalStyle`
-  /* @font-face {
-      font-family: 'Poppins';
-      src: url('../assets/fonts/Poppins-Light.ttf') format('truetype');
-      font-weight: 300;
-      font-style: normal;
-      font-display: swap;
-  }
-
-
   @font-face {
-      font-family: 'Poppins';
-      src: url('../assets/fonts/Poppins-Regular.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
+    font-family: 'Wotfard';
+    src: url('../assets/fonts/wotfard-regular-webfont.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
-      font-family: 'Poppins';
-      src: url('../assets/fonts/Poppins-SemiBold.ttf') format('truetype');
-      font-weight: 600;
-      font-style: normal;
-      font-display: swap;
+    font-family: 'Rubik';
+    src: url('../assets/fonts/Rubik-Regular.ttf') format('truetype');
+    font-weight: 400;
+    font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
-      font-family: 'Poppins';
-      src: url('../assets/fonts/Poppins-Bold.ttf') format('truetype');
-      font-weight: bold;
-      font-style: normal;
-      font-display: swap;
-  }
-
-
-  @font-face {
-      font-family: 'Rubik';
-      src: url('../assets/fonts/Rubik-Regular.ttf') format('truetype');
-      font-weight: normal;
-      font-style: normal;
-      font-display: swap;
+    font-family: 'Rubik';
+    src: url('../assets/fonts/Rubik-SemiBold.ttf') format('truetype');
+    font-weight: 600;
+    font-style: normal;
+    font-display: swap;
   }
 
   @font-face {
-      font-family: 'Rubik';
-      src: url('../assets/fonts/Rubik-SemiBold.ttf') format('truetype');
-      font-weight: 600;
-      font-style: normal;
-      font-display: swap;
+    font-family: 'Rubik';
+    src: url('../assets/fonts/Rubik-Bold.ttf') format('truetype');
+    font-weight: 700;
+    font-style: normal;
+    font-display: swap;
   }
-
-  @font-face {
-      font-family: 'Rubik';
-      src: url('../assets/fonts/Rubik-Bold.ttf') format('truetype');
-      font-weight: bold;
-      font-style: normal;
-      font-display: swap;
-  }
-
-
-  @font-face {
-      font-family: 'Rubik';
-      src: url('../assets/fonts/Rubik-Black.ttf') format('truetype');
-      font-weight: 900;
-      font-style: normal;
-      font-display: swap;
-  } */
-
 
   *,
   *::before,
@@ -88,14 +52,15 @@ export const GlobalStyles = createGlobalStyle`
     --white: #FFFFFF;
     --grey1: #FAFAFA;
     --grey2: #F2F2F2;
+    --grey3: #d6dbdd;
     --rubik: 'Rubik';
-    --poppins: 'Poppins';
-    --light: 300;
-    --regular: normal;
-    --semiBold: 600;
-    --bold: bold;
-    --black: 900;
+    --wotfard: 'Wotfard';
+    --fontWeight-light: 300;
+    --fontWeight-regular: 400;
+    --fontWeight-semiBold: 600;
+    --fontWeight-bold: 700;
     --max-width: 110.6rem;
+    --shadow: 0 0.4rem 1.6rem 0 rgba(0,0,0,0.25);
   }
 
   html {
@@ -105,13 +70,13 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: var(--poppins);
+    font-family: var(--wotfard), ---apple-system, BlinkMacSystemFont, 'Open Sans', 'Helvetica Neue', sans-serif;
   }
 
 
   h1, h2, h3, h4, h5, h6 {
     font-family: var(--rubik);
-    font-weight: var(--bold);
+    font-weight: var(--fontWeight-bold);
   }
 
   h1 {
@@ -147,7 +112,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   hr {
-    color: var(---primary);
+    color: var(--primary);
   }
 
   @media(max-width: ${variables.breakpoints.desktop}) {
