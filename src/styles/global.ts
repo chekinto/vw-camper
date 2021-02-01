@@ -4,7 +4,7 @@ import { variables } from 'styles/variables'
 export const GlobalStyles = createGlobalStyle`
   @font-face {
     font-family: 'Wotfard';
-    src: url('../assets/fonts/wotfard-regular-webfont.ttf') format('truetype');
+    src: url('../assets/fonts/wotfard.ttf') format('truetype');
     font-weight: 400;
     font-style: normal;
     font-display: swap;
@@ -70,7 +70,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: var(--wotfard), ---apple-system, BlinkMacSystemFont, 'Open Sans', 'Helvetica Neue', sans-serif;
+    font-family: var(--wotfard), ---apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif;
   }
 
 
