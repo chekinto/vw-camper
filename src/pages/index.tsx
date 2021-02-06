@@ -19,6 +19,14 @@ const Home = () => {
   }
 
   const handleFormSubmit = (e) => {
+    fetch("/", {
+      method: 'POST',
+      headers: { "Content-Type": "application/x-www-form-urlencoded" },
+      body: encode({ "form-name": "contact", ...formData })
+    })
+      .then(() => alert('Success'))
+      .catch(error => alert(error))
+
     e.preventDefault();
   }
 
@@ -102,7 +110,14 @@ const Home = () => {
             subtitle="If your interested in booking one of our beautiful campers or have any questions about what we do then please do get in touch."
           />
 
-          <Form action="/" onSubmit={handleFormSubmit} name="contact" data-netlify="true" method="POST">
+          <Form
+            action="/"
+            method="POST"
+            name="contact"
+            data-netlify="true"
+            ata-netlify-honeypot="bot-field"
+            onSubmit={handleFormSubmit}
+          >
             <input type="hidden" name="form-name" value="contact" />
             <Input
               type="text"
