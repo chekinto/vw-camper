@@ -1,0 +1,15 @@
+.chat-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+}
+
+.address {
+  text-align: center;
+}
+
+.info-column {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.2rem;
+}

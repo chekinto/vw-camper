@@ -27,17 +27,17 @@ export const navigationLinks = [
 
 export const termsAndConditions = [
   {
-    title: 'Terms & conditions',
+    title: 'Help & support',
+    path: '/help-and-support'
+  },
+  {
+    title: 'Terms & conditions policy',
     path: '/terms-and-conditions'
   },
   {
-    title: 'Privacy & cookies',
+    title: 'Privacy & cookies policy',
     path: '/privacy-and-cookies'
-  },
-  {
-    title: 'Terms & conditions',
-    path: '/terms-and-conditions'
-  },
+  }
 ]
 
 export const findUs = [

@@ -1,15 +1,14 @@
 import React from "react"
-import { navigate } from 'gatsby'
-import { Banner, Button, Divider, Icon, PricingCard, ServiceCard, Section, TitleBanner } from 'components/common'
-import { Container, Flex, HeaderScripts } from 'components/constants'
-import { Input, TextArea } from 'components/forms'
-import { Hero } from 'components/sections/hero'
-import { MeetTheBuses } from 'components/sections/meet-the-buses'
-import { services, pricing, whatsIncluded, optionalExtras } from 'features'
+import { Button, Container, Form, HeaderScripts, Divider, Icon, Input, TextArea, Hero, PricingList, ServiceList, Section, TitleBanner, ItemList, BusList } from 'components'
+import { buses, services, pricing, whatsIncluded, optionalExtras } from 'features'
 import { useGlobalContext } from 'context'
+import email from 'assets/icons/email.svg'
+import phone from 'assets/icons/phone.svg'
+import './index.css'
 
 const Home = () => {
   const { formData, setFormData } = useGlobalContext();
+
   const handleFormChange = (e) => {
     const name = e.target.name;
     const value = e.target.value;
@@ -17,48 +16,43 @@ const Home = () => {
       ...formData,
       [name]: value
     })
-
-    console.log('formData submitted:>> ', formData);
   }
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
-    console.log('formData :>> ', formData);
   }
 
   return (
     <>
-      <HeaderScripts
-        pageMeta={{ title: 'Home', description: 'Home page' }}
-      />
+      <HeaderScripts pageMeta={{ title: 'Home', description: 'Home page' }} />
+
       <Hero />
 
-      <Banner>
-        <p>Hire a VW Camper van now</p>
-        <Button onClick={() => navigate('/#contact')} secondary>Contact us</Button>
-      </Banner>
+      {/* <Banner>
+        <Container className="test">
+          <p>Hire a VW Camper van now</p>
+          <Button onClick={() => navigate('/#contact')} secondary>Contact us</Button>
+        </Container>
+      </Banner> */}
 
-      <MeetTheBuses />
+      <Section isGrey>
+        <Container>
+          <TitleBanner title="Meet the buses" />
+          <BusList buses={buses} />
+        </Container>
+      </Section>
 
-      <Section id="#services">
+      <Section>
         <Container>
           <TitleBanner
             title="Services"
             subtitle="Whether it's for adventurous family holidays, outdoor sports, bird watching trips, festivals or just to get away from it all - VW Camper van is the place to get exactly what you need. For more information click here"
           />
-
-          <Flex direction="column" gap={1.6}>
-            {services.map(service => (
-              <ServiceCard
-                title={service.title}
-                bgImage={service.bgImage}
-              />
-            ))}
-          </Flex>
+          <ServiceList services={services} />
         </Container>
       </Section>
 
-      <Section id="#our-story" isGrey>
+      <Section isGrey className="our-story">
         <Container>
           <img src="https://via.placeholder.com/150C/O https://placeholder.com/" alt="placeholder image" />
           <TitleBanner title="Our story" />
@@ -68,45 +62,47 @@ const Home = () => {
         </Container>
       </Section>
 
-      <Section id="#pricing">
+      <Section>
         <Container>
-          <TitleBanner
-            title="Pricing"
-            subtitle="All prices per day are subject to VAT"
-          />
-          <Flex direction="column">
-            {pricing.map((price, index) => (
-              <PricingCard key={index} {...price} />
-            ))}
-          </Flex>
-
-          <h3>Whats included?</h3>
-          {whatsIncluded.map((item, index) => (
-            <Flex key={index} gap={0.8}>
-              <Icon src={item.icon} fill="red" />
-              <span>{item.content}</span>
-            </Flex>
-          ))}
-
+          <TitleBanner title="Pricing" subtitle="All prices per day are subject to VAT" />
+          <PricingList items={pricing} />
+          <ItemList label="Whats included?" items={whatsIncluded} />
           <Divider />
-
-          <h3>Optional extras</h3>
-          {optionalExtras.map((item, index) => (
-            <Flex key={index} gap={0.8}>
-              <Icon src={item.icon} fill="red" />
-              <span>{item.content}</span>
-            </Flex>
-          ))}
+          <ItemList label="Optional extras" items={optionalExtras} />
         </Container>
       </Section>
 
-      <Section id="#contact" isGrey>
+      <Section style={{ background: 'var(--primary)' }}>
+        <Container>
+          <h3 style={{ textAlign: 'center' }}>Contact info</h3>
+          <div className="chat-grid">
+            <div>
+              <div className="address">
+                <p>12 random Street,</p>
+                <p>Islington</p>
+                <p>North London,</p>
+                <p>N16 YUB</p>
+              </div>
+
+              <div className="info-column">
+                <Icon src={phone} alt="" /> <a href="tel:01224392545">01224392545</a>
+              </div>
+              <div className="info-column">
+                <Icon src={email} alt="" /> <a href="mailto:hire@vwcamper.com">01224392545</a>
+              </div>
+            </div>
+          </div>
+        </Container>
+      </Section>
+
+      <Section isGrey>
         <Container>
           <TitleBanner
             title="Let's chat"
-            subtitle="Interesting in booking one of our beautiful campers or have any questions about what we do then please do get in touch."
+            subtitle="If your interested in booking one of our beautiful campers or have any questions about what we do then please do get in touch."
           />
-          <form onSubmit={handleFormSubmit} name="contact" data-netlify="true" method="POST">
+
+          <Form action="/" onSubmit={handleFormSubmit} name="contact" data-netlify="true" method="POST">
             <input type="hidden" name="form-name" value="contact" />
             <Input
               type="text"
@@ -138,12 +134,9 @@ const Home = () => {
               onChange={handleFormChange}
             />
             <Button fullWidth type="submit">Submit</Button>
-          </form>
+          </Form>
         </Container>
       </Section>
-
-
-
     </>
   )
 }
