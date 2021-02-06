@@ -21,7 +21,8 @@ const slideIn = keyframes`
 const HeroSection = styled(Section)`
   display: grid;
   place-items: center;
-  height: 100vh;
+  height: calc(100vh - 4rem);
+  padding-top: 4rem;
   background-color: var(--primary);
 `;
 

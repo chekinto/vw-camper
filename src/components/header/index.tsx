@@ -26,7 +26,7 @@ const InnerHeader = styled.div`
     font-family: var(--rubik);
     font-weight: var(--fontWeight-bold);
     span {
-      color: var(--primary);
+      color: var(--white);
     }
   }
   .nav__btn {

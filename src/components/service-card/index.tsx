@@ -12,8 +12,8 @@ const StyledServiceCard = styled.article<{ bgImage: string }>`
   border-radius: var(--borderRadius-md);
   box-shadow: var(--shadow);
   height: auto;
-  width: 24.6rem;
-  min-height: 16rem;
+  width: 100%;
+  min-height: 22rem;
   position: relative;
   overflow: hidden;
   margin: 0 auto;
