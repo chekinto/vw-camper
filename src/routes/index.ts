@@ -42,14 +42,17 @@ export const termsAndConditions = [
 
 export const findUs = [
   {
+    title: 'twitter',
     icon: twitter,
     path: '#'
   },
   {
+    title: 'instagram',
     icon: instagram,
     path: '#'
   },
   {
+    title: 'facebook',
     icon: facebook,
     path: '#'
   },

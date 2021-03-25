@@ -33,13 +33,7 @@ export const GlobalStyles = createGlobalStyle`
     font-style: normal;
     font-display: swap;
   }
-
-  *,
-  *::before,
-  *::after {
-    box-sizing: border-box;
-  }
-
+  
   *,
   *::before,
   *::after {
@@ -221,5 +215,10 @@ export const GlobalStyles = createGlobalStyle`
     h3 {
       font-size:2rem; 
     }
+  }
+
+  /* Utils */
+  .capitalize {
+    text-transform: capitalize;
   }
 `;

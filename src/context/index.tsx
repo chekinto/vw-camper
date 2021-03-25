@@ -2,22 +2,22 @@ import React, { createContext, useContext, useState } from 'react'
 
 export const AppContext = createContext(null)
 
-interface AppContextProps {
+interface FormDataProps {
   name: string;
   email: string;
-  telephone: string | number;
+  telephone: number;
   message: string;
 }
 
 export const AppContextProvider = ({ children }) => {
-  const [formData, setFormData] = useState<AppContextProps>({
-    name: '',
-    email: '',
-    telephone: '',
-    message: ''
-  })
+  const [formData, setFormData] = useState<FormDataProps | undefined>({})
+  // const [observerNode, setObserverNode] = useState({})
+
   return (
-    <AppContext.Provider value={{ formData, setFormData }}>
+    <AppContext.Provider value={{
+      formData,
+      setFormData
+    }}>
       {children}
     </AppContext.Provider>
   )
