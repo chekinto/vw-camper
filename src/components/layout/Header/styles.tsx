@@ -49,16 +49,13 @@ export const Nav = styled.nav<{ isDropdownOpen?: boolean }>`
     align-items: center;
     gap: 3.2rem;
   }
-
   li {
     list-style: none;
     position: relative;
   }
-
   .nav__link {
     font-size: 1.6rem;
     font-weight: var(--fontWeight-semiBold);
-
     &.titleActive {
       color: var(--white);
     }
@@ -68,11 +65,9 @@ export const Nav = styled.nav<{ isDropdownOpen?: boolean }>`
     position: relative;
     border: none;
     background-color: transparent;
-
     &::focus-within {
       background-color: red;
     }
-
     &::after {
       content: url(${chevronDown});
       position: absolute;
@@ -100,7 +95,6 @@ export const DropdownItem = styled.div<{ isFocused?: boolean }>`
   color: var(--black);
   font-weight: bold;
   box-shadow: 0 30px 60px rgb(0 0 0 / 2%), 0 0 20px rgb(0 0 0 / 4%);
-  
     &:first-child {
       margin-bottom: 1.6rem;
     }

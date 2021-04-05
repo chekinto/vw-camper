@@ -39,7 +39,6 @@ const StyledBurger = styled.button<{ isOpen: boolean }>`
   ${({ isOpen }) => isOpen && css`
     div {
       background-color: transparent;
-
       &::before {
         color: var(--black);
         transform: rotate(45deg); 

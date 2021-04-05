@@ -22,8 +22,6 @@ const StyledButton = styled.button<ButtonProps>`
     padding: 1.6rem 3.2rem;
   `}
 
-
-
   ${({ navBtn }) => navBtn && css`
     font-size: 1.4rem;
     /* width: auto; */

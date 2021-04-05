@@ -23,7 +23,6 @@ const StyledFooter = styled.footer`
     font-weight: var(--fontWeight-bold);
     margin-bottom: 2.4rem;
   }
-  
   .copyright {
     color: var(--white);
     font-size: 1.4rem;
