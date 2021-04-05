@@ -1,47 +1,105 @@
-import React from "react"
-import { Button, Container, Form, HeaderScripts, Divider, Icon, Input, TextArea, Hero, PricingList, ServiceList, Section, TitleBanner, ItemList, BusList } from 'components'
+import React, { useRef, useEffect } from "react"
+import { useForm } from 'react-hook-form'
+import {
+  Button,
+  Container,
+  Form,
+  HeaderScripts,
+  Divider,
+  Icon,
+  Input,
+  TextArea,
+  Hero,
+  PricingList,
+  ServiceList,
+  Section,
+  TitleBanner,
+  ItemsList,
+  BusList,
+  // Popup
+} from 'components'
 import { buses, services, pricing, whatsIncluded, optionalExtras } from 'features'
 import { useGlobalContext } from 'context'
 import email from 'assets/icons/email.svg'
 import phone from 'assets/icons/phone.svg'
 import './index.css'
 
-const Home = () => {
-  const { formData, setFormData } = useGlobalContext();
+const Index = () => {
+  const { setObserveNode } = useGlobalContext()
+  const { register, handleSubmit, errors } = useForm();
 
-  const handleFormChange = (e) => {
-    const name = e.target.name;
-    const value = e.target.value;
-    setFormData({
-      ...formData,
-      [name]: value
+  const servicesRef = useRef()
+  const pricingRef = useRef()
+
+  const callback = (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (entry.target.id === 'services') {
+          setObserveNode({
+            services: true,
+            pricing: false
+          })
+        }
+        if (entry.target.id === 'pricing') {
+          setObserveNode({
+            services: false,
+            pricing: true
+          })
+        }
+      }
     })
   }
 
-  const handleFormSubmit = (e) => {
-    fetch("/", {
-      method: 'POST',
-      headers: { "Content-Type": "application/x-www-form-urlencoded" },
-      body: encode({ "form-name": "contact", ...formData })
-    })
-      .then(() => alert('Success'))
-      .catch(error => alert(error))
-
-    e.preventDefault();
+  const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 1.0
   }
+
+  const observer = new IntersectionObserver(callback, options)
+
+
+  // const [popupActive, setPopupActive] = useState({ message: '', active: false })
+  // This is config for the Netlify form
+  const encode = (data) => {
+    return Object.keys(data)
+      .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
+      .join("&");
+  }
+
+  const submitForm = async (data: any) => {
+    console.log(`data =>>>>>`, data)
+    try {
+      await fetch("/", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: encode({ "form-name": "contact", ...data })
+      })
+        .then(() => console.log('message sent'))
+    } catch (error) {
+      console.error(error, error.message)
+    }
+  }
+
+  useEffect(() => {
+    if (servicesRef) {
+      observer.observe(servicesRef.current)
+    }
+    if (pricingRef) {
+      observer.observe(pricingRef.current)
+    }
+  }, [])
 
   return (
     <>
-      <HeaderScripts pageMeta={{ title: 'Home', description: 'Home page' }} />
+      <HeaderScripts pageMeta={{
+        title: 'Home',
+        description: 'VW Camper hire in London for rental '
+      }} />
 
       <Hero />
-
-      {/* <Banner>
-        <Container className="test">
-          <p>Hire a VW Camper van now</p>
-          <Button onClick={() => navigate('/#contact')} secondary>Contact us</Button>
-        </Container>
-      </Banner> */}
 
       <Section isGrey>
         <Container>
@@ -50,7 +108,7 @@ const Home = () => {
         </Container>
       </Section>
 
-      <Section>
+      <Section id="services" ref={servicesRef}>
         <Container>
           <TitleBanner
             title="Services"
@@ -62,7 +120,6 @@ const Home = () => {
 
       <Section isGrey className="our-story">
         <Container>
-          <img src="https://via.placeholder.com/150C/O https://placeholder.com/" alt="placeholder image" />
           <TitleBanner title="Our story" />
           <p>
             Family trio Peter Julie and Steven are seriously passionate about VW Campers! We have always been huge lovers of the great outdoors taking every opportunity to rome freely across the land, from rolling hills to open fields, private hideaways to sea views, from weddings and proms to festivals, films and videos, Our classic VW campers are perfect for any special occasion! Steven has been driving and maintaining campers for 35 years, you can rest assured that you will be traveling in style.
@@ -70,19 +127,19 @@ const Home = () => {
         </Container>
       </Section>
 
-      <Section>
+      <Section id="pricing" ref={pricingRef}>
         <Container>
           <TitleBanner title="Pricing" subtitle="All prices per day are subject to VAT" />
           <PricingList items={pricing} />
-          <ItemList label="Whats included?" items={whatsIncluded} />
+          <ItemsList label="Whats included?" items={whatsIncluded} />
           <Divider />
-          <ItemList label="Optional extras" items={optionalExtras} />
+          <ItemsList label="Optional extras" items={optionalExtras} />
         </Container>
       </Section>
 
       <Section style={{ background: 'var(--primary)' }}>
         <Container>
-          <h3 style={{ textAlign: 'center' }}>Contact info</h3>
+          <h3>Contact info</h3>
           <div className="chat-grid">
             <div>
               <div className="address">
@@ -93,17 +150,20 @@ const Home = () => {
               </div>
 
               <div className="info-column">
-                <Icon src={phone} alt="" /> <a href="tel:01224392545">01224392545</a>
+                <Icon src={phone} alt="" />
+                <a href="tel:01224392545">01224392545</a>
               </div>
+
               <div className="info-column">
-                <Icon src={email} alt="" /> <a href="mailto:hire@vwcamper.com">01224392545</a>
+                <Icon src={email} alt="" />
+                <a href="mailto:hire@vwcamper.com">01224392545</a>
               </div>
             </div>
           </div>
         </Container>
       </Section>
 
-      <Section isGrey>
+      <Section isGrey id="contact">
         <Container>
           <TitleBanner
             title="Let's chat"
@@ -111,49 +171,53 @@ const Home = () => {
           />
 
           <Form
-            action="/"
+            // action="/"
             method="POST"
             name="contact"
             data-netlify="true"
-            ata-netlify-honeypot="bot-field"
-            onSubmit={handleFormSubmit}
+            data-netlify-honeypot="bot-field"
+            onSubmit={handleSubmit(submitForm)}
           >
             <input type="hidden" name="form-name" value="contact" />
             <Input
               type="text"
               label="Name*"
               name="name"
-              value={formData.name}
-              onChange={handleFormChange}
-              required
+              placeholder="Enter you name.."
+              ref={register}
             />
+            {errors.name && <span>{errors.name.message}</span>}
             <Input
               type="text"
               label="Email*"
               name="email"
-              value={formData.email}
-              onChange={handleFormChange}
-              required
+              placeholder="example@mail.com"
+              ref={register({
+                required: true
+              })}
             />
             <Input
-              type="text"
+              type="tel"
               label="Telephone"
               name="telephone"
-              value={formData.telephone}
-              onChange={handleFormChange}
+              ref={register({
+                required: true
+              })}
             />
             <TextArea
               label="Message*"
               name="message"
-              value={formData.message}
-              onChange={handleFormChange}
+              ref={register({
+                required: true
+              })}
             />
             <Button fullWidth type="submit">Submit</Button>
           </Form>
+          {/* <Popup message={popupActive.message} type="success" isOpen={popupActive.active} /> */}
         </Container>
       </Section>
     </>
   )
 }
 
-export default Home
+export default Index
