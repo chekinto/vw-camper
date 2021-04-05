@@ -1,4 +1,13 @@
 .vehicle--grid {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  display: flex;
+  flex-direction: column;
+}
+
+@media(min-width: 765px) {
+  .vehicle--grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+
+  }
+
 }

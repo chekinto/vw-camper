@@ -11,12 +11,20 @@ interface FormDataProps {
 
 export const AppContextProvider = ({ children }) => {
   const [formData, setFormData] = useState<FormDataProps | undefined>({})
-  // const [observerNode, setObserverNode] = useState({})
+  const [loading, setLoading] = useState(false)
+  const [observeNode, setObserveNode] = useState({
+    services: false,
+    pricing: false,
+  })
 
   return (
     <AppContext.Provider value={{
+      loading,
+      setLoading,
       formData,
-      setFormData
+      setFormData,
+      observeNode,
+      setObserveNode
     }}>
       {children}
     </AppContext.Provider>

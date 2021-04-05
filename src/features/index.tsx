@@ -10,17 +10,17 @@ export const buses = [
   {
     title: 'hudson',
     content: 'He is the old boy of the gang as he was born way back in 1968, he is an “early bay” and one of the first. He was originally converted by a company called Devon and still has some of the original Devon features. Inside he has been totally restored to a very high standard with latest addition being new tartan upholstery. Stan has covered many miles but is still going strong, He has toured the length and breadth of Scotland and made and met new friends on his travels.',
-    image: Ada,
+    image: Hudson,
     buttonText: 'VIEW FEATURES & SPECS',
-    path: '/meet-the-buses/ada',
+    path: '/meet-the-buses/hudson',
     isReversed: false,
   },
   {
     title: 'ada',
     content: 'He is the old boy of the gang as he was born way back in 1968, he is an “early bay” and one of the first. He was originally converted by a company called Devon and still has some of the original Devon features. Inside he has been totally restored to a very high standard with latest addition being new tartan upholstery. Stan has covered many miles but is still going strong, He has toured the length and breadth of Scotland and made and met new friends on his travels.',
-    image: Hudson,
+    image: Ada,
     buttonText: 'VIEW FEATURES & SPECS',
-    path: '/meet-the-buses/hudson',
+    path: '/meet-the-buses/ada',
     isReversed: true,
   }
 ]

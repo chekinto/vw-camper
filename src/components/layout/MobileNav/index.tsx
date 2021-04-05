@@ -45,20 +45,21 @@ const StyledMobileNav = styled.nav<{ isOpen: boolean }>`
 
 interface MobileNavProps {
   isOpen: boolean;
+  setIsOpen: (boolean) => void;
 }
 
-export const MobileNav: FunctionComponent<MobileNavProps> = ({ isOpen }) => {
+export const MobileNav: FunctionComponent<MobileNavProps> = ({ isOpen, setIsOpen }) => {
   return (
     <>
       <StyledMobileNav isOpen={isOpen}>
         <ul>
           <li>
-            <AnchorLink className="anchor__link" to="/#services" title="Services">
+            <AnchorLink className="anchor__link" to="/#services" title="Services" onAnchorLinkClick={() => setIsOpen(false)}>
               Services
-          </AnchorLink>
+            </AnchorLink>
           </li>
           <li>
-            <AnchorLink className="anchor__link" to="/#pricing" title="Pricing">
+            <AnchorLink className="anchor__link" to="/#pricing" title="Pricing" onAnchorLinkClick={() => setIsOpen(false)}>
               Pricing
             </AnchorLink>
           </li>

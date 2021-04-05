@@ -1,4 +1,4 @@
-import React from "react"
+import React, { useRef, useEffect } from "react"
 import { useForm } from 'react-hook-form'
 import {
   Button,
@@ -19,37 +19,78 @@ import {
   // Popup
 } from 'components'
 import { buses, services, pricing, whatsIncluded, optionalExtras } from 'features'
+import { useGlobalContext } from 'context'
 import email from 'assets/icons/email.svg'
 import phone from 'assets/icons/phone.svg'
 import './index.css'
 
 const Index = () => {
-  const { register, handleSubmit, watch, errors } = useForm();
+  const { setObserveNode } = useGlobalContext()
+  const { register, handleSubmit, errors } = useForm();
+
+  const servicesRef = useRef()
+  const pricingRef = useRef()
+
+  const callback = (entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        if (entry.target.id === 'services') {
+          setObserveNode({
+            services: true,
+            pricing: false
+          })
+        }
+        if (entry.target.id === 'pricing') {
+          setObserveNode({
+            services: false,
+            pricing: true
+          })
+        }
+      }
+    })
+  }
+
+  const options = {
+    root: null,
+    rootMargin: '0px',
+    threshold: 1.0
+  }
+
+  const observer = new IntersectionObserver(callback, options)
+
+
   // const [popupActive, setPopupActive] = useState({ message: '', active: false })
   // This is config for the Netlify form
-
-  console.log(watch("name"))
   const encode = (data) => {
     return Object.keys(data)
       .map(key => encodeURIComponent(key) + "=" + encodeURIComponent(data[key]))
       .join("&");
   }
 
-  const submitForm = (data: any) => {
+  const submitForm = async (data: any) => {
     console.log(`data =>>>>>`, data)
-    // try {
-    //   fetch("/", {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/x-www-form-urlencoded'
-    //     },
-    //     body: encode({ "form-name": "contact", ...data })
-    //   })
-    //     .then(() => console.log('message sent'))
-    // } catch (error) {
-    //   console.error(error, error.message)
-    // }
+    try {
+      await fetch("/", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: encode({ "form-name": "contact", ...data })
+      })
+        .then(() => console.log('message sent'))
+    } catch (error) {
+      console.error(error, error.message)
+    }
   }
+
+  useEffect(() => {
+    if (servicesRef) {
+      observer.observe(servicesRef.current)
+    }
+    if (pricingRef) {
+      observer.observe(pricingRef.current)
+    }
+  }, [])
 
   return (
     <>
@@ -67,7 +108,7 @@ const Index = () => {
         </Container>
       </Section>
 
-      <Section id="services">
+      <Section id="services" ref={servicesRef}>
         <Container>
           <TitleBanner
             title="Services"
@@ -86,7 +127,7 @@ const Index = () => {
         </Container>
       </Section>
 
-      <Section id="pricing">
+      <Section id="pricing" ref={pricingRef}>
         <Container>
           <TitleBanner title="Pricing" subtitle="All prices per day are subject to VAT" />
           <PricingList items={pricing} />
@@ -112,6 +153,7 @@ const Index = () => {
                 <Icon src={phone} alt="" />
                 <a href="tel:01224392545">01224392545</a>
               </div>
+
               <div className="info-column">
                 <Icon src={email} alt="" />
                 <a href="mailto:hire@vwcamper.com">01224392545</a>
@@ -129,7 +171,7 @@ const Index = () => {
           />
 
           <Form
-            action="/"
+            // action="/"
             method="POST"
             name="contact"
             data-netlify="true"
@@ -139,13 +181,13 @@ const Index = () => {
             <input type="hidden" name="form-name" value="contact" />
             <Input
               type="text"
-              // label="Name*"
+              label="Name*"
               name="name"
               placeholder="Enter you name.."
               ref={register}
             />
-            {/* {errors.name && <span>{errors.name.message}</span>} */}
-            {/* <Input
+            {errors.name && <span>{errors.name.message}</span>}
+            <Input
               type="text"
               label="Email*"
               name="email"
@@ -155,7 +197,7 @@ const Index = () => {
               })}
             />
             <Input
-              type="number"
+              type="tel"
               label="Telephone"
               name="telephone"
               ref={register({
@@ -168,7 +210,7 @@ const Index = () => {
               ref={register({
                 required: true
               })}
-            /> */}
+            />
             <Button fullWidth type="submit">Submit</Button>
           </Form>
           {/* <Popup message={popupActive.message} type="success" isOpen={popupActive.active} /> */}

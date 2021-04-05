@@ -16,11 +16,7 @@ interface ServiceProps {
 }
 
 const ServiceTemplate: FunctionComponent<Props> = ({ pageContext }) => {
-  const [service, setService] = useState<ServiceProps>({
-    title: '',
-    bgImage: '',
-    slug: ''
-  })
+  const [service, setService] = useState<ServiceProps>({ title: '', bgImage: '', slug: '' })
 
   useEffect(() => {
     const singleService = services.find((service => {

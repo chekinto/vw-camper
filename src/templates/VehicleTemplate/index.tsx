@@ -1,6 +1,7 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
 import { Container } from 'components'
 import { buses } from 'features'
+import './styles.css'
 
 interface Props {
   pageContext: {
@@ -34,7 +35,7 @@ const VehicleTemplate: FunctionComponent<Props> = ({ pageContext }) => {
     setVehicle(singleCamper)
   }, [])
 
-  const { title, content, image, buttonText, path, isReversed } = vehicle;
+  const { title, content, image } = vehicle;
 
   return (
     <Container style={{ marginTop: '9.4rem' }}>

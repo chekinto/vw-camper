@@ -20,7 +20,7 @@ const StyledInput = styled.input`
 `;
 
 interface InputProps {
-  type: 'text' | 'password' | 'search' | 'email' | 'number';
+  type: 'text' | 'password' | 'search' | 'email' | 'number' | "tel";
   value?: string | number;
   id?: string;
   label?: string;
@@ -30,7 +30,7 @@ interface InputProps {
   onChange?: (e) => void;
   onBlur?: (e) => void;
   onFocus?: (e) => void;
-  ref: unknown;
+  ref: () => void;
 }
 
 export const Input: FunctionComponent<InputProps> = ({
@@ -41,10 +41,10 @@ export const Input: FunctionComponent<InputProps> = ({
   name,
   placeholder,
   required = false,
-  ref,
   onChange,
   onBlur,
-  onFocus
+  onFocus,
+  ref
 }) => {
   return (
     <>
