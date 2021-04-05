@@ -1,7 +1,7 @@
 import React from 'react'
-import { GlobalStyles } from 'styles/global'
-import { Layout } from 'components/Layout'
-import { AppContextProvider } from 'context'
+import { GlobalStyles } from './src/styles/global'
+import { Layout } from './src/components/Layout'
+import { AppContextProvider } from './src/context'
 
 export const wrapPageElement = ({ element, props }) => {
   return (
