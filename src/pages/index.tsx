@@ -56,10 +56,6 @@ const Index = () => {
     threshold: 1.0
   }
 
-  const observer = new IntersectionObserver(callback, options)
-
-
-  // const [popupActive, setPopupActive] = useState({ message: '', active: false })
   // This is config for the Netlify form
   const encode = (data) => {
     return Object.keys(data)
@@ -68,7 +64,6 @@ const Index = () => {
   }
 
   const submitForm = async (data: any) => {
-    console.log(`data =>>>>>`, data)
     try {
       await fetch("/", {
         method: 'POST',
@@ -84,6 +79,7 @@ const Index = () => {
   }
 
   useEffect(() => {
+    const observer = new IntersectionObserver(callback, options)
     if (servicesRef) {
       observer.observe(servicesRef.current)
     }
