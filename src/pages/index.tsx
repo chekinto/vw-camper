@@ -124,6 +124,10 @@ const Index = () => {
           <p>
             Family trio Peter Julie and Steven are seriously passionate about VW Campers! We have always been huge lovers of the great outdoors taking every opportunity to rome freely across the land, from rolling hills to open fields, private hideaways to sea views, from weddings and proms to festivals, films and videos, Our classic VW campers are perfect for any special occasion! Steven has been driving and maintaining campers for 35 years, you can rest assured that you will be traveling in style.
           </p>
+
+          <p>
+            My family and I love the great outdoors and after working with Kids all day it's great to get away, whether it's to sit under the stars, watch the sun set, listen to the sea roll in or hide away in the woods, it doesn't take much to just get away!
+          </p>
         </Container>
       </Section>
 
@@ -139,7 +143,7 @@ const Index = () => {
 
       <Section style={{ background: 'var(--primary)' }}>
         <Container>
-          <h3>Contact info</h3>
+          <h3 className="text-centered">Contact info</h3>
           <div className="chat-grid">
             <div>
               <div className="address">

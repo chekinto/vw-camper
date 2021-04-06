@@ -83,18 +83,17 @@ export const Nav = styled.nav<{ isDropdownOpen?: boolean }>`
 
 export const DropdownContainer = styled.div`
   position: absolute;
-  top: 5.4rem;
   width: 120%;
   padding: 2.4rem;
   padding-left: 1.6rem;
   border-radius: 0 0 2.4rem 2.4rem;
+  background-color: var(--primary);
 `;
 
 export const DropdownItem = styled.div<{ isFocused?: boolean }>`
   font-size: 1.6rem;
   color: var(--black);
   font-weight: bold;
-  box-shadow: 0 30px 60px rgb(0 0 0 / 2%), 0 0 20px rgb(0 0 0 / 4%);
     &:first-child {
       margin-bottom: 1.6rem;
     }

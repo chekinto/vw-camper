@@ -42,7 +42,7 @@ export const GlobalStyles = createGlobalStyle`
     padding: 0;
   }
 
- :root {
+  :root {
     --borderRadius-sm: 0.4rem;
     --borderRadius-md: 0.6rem;
     --borderRadius-lg: 0.8rem;
@@ -72,6 +72,7 @@ export const GlobalStyles = createGlobalStyle`
 
   body {
     font-family: 'Inter', ---apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif;
+    height: 100%;
   }
 
   main {
@@ -82,6 +83,7 @@ export const GlobalStyles = createGlobalStyle`
     color: inherit;
     font-weight: bold;
     font-family: var(--rubik);
+    margin-top: 0;
   }
 
   h1 {
@@ -220,5 +222,9 @@ export const GlobalStyles = createGlobalStyle`
   /* Utils */
   .capitalize {
     text-transform: capitalize;
+  }
+
+  .text-centered {
+    text-align: center;
   }
 `;

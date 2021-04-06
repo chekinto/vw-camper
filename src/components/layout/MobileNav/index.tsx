@@ -14,7 +14,7 @@ const slideIn = keyframes`
 const StyledMobileNav = styled.nav<{ isOpen: boolean }>`
   width: 80%;
   height: 100vh;
-  background-color: red;
+  background-color: var(--secondary);
   position: fixed;
   top: 0;
   right: 0;
@@ -31,10 +31,14 @@ const StyledMobileNav = styled.nav<{ isOpen: boolean }>`
     flex-direction: column;
     li {
       font-size: 2rem;
+      font-weight: bold;
+      list-style: none;
+      margin-bottom: 1rem;
     }
   }
 
   .anchor__link {
+    color: var(--white);
     list-style: none;
   }
 

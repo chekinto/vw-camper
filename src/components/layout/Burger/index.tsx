@@ -40,12 +40,14 @@ const StyledBurger = styled.button<{ isOpen: boolean }>`
     div {
       background-color: transparent;
       &::before {
-        color: var(--black);
+      background-color: var(--white);
+        color: var(--white);
         transform: rotate(45deg); 
         top: 0;
       }
       &::after {
-        color: var(--black);
+      background-color: var(--white);
+        color: var(--white);
         transform: rotate(-45deg);  
         top: 0;  
       }
