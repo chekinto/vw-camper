@@ -1,12 +1,10 @@
 import React from 'react'
-import { GlobalStyles } from 'styles/global'
 import { Layout } from 'components/Layout'
 import { AppContextProvider } from 'src/context'
 
 export const wrapPageElement = ({ element, props }) => {
   return (
     <>
-      <GlobalStyles />
       <Layout {...props}>
         {element}
       </Layout>
@@ -16,8 +14,10 @@ export const wrapPageElement = ({ element, props }) => {
 
 export const wrapRootElement = ({ element }) => {
   return (
-    <AppContextProvider>
-      {element}
-    </AppContextProvider>
+    <ChakraProvider>
+      <AppContextProvider>
+        {element}
+      </AppContextProvider>
+    </ChakraProvider>
   )
 }

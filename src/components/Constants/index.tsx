@@ -1,6 +1,3 @@
-export * from './Container'
-export * from './Flex'
-export * from './Grid'
+export * from './ContactForm'
 export * from './HeaderScripts'
 export * from './Hero'
-export * from './Section'

@@ -1,113 +1,94 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import styled from 'styled-components'
-import { Container, Icon } from 'components'
-import {
-  navigationLinks,
-  termsAndConditions,
-  findUs
-} from 'routes'
-import email from 'assets/icons/email.svg'
-import phone from 'assets/icons/phone.svg'
-import { variables } from 'styles/variables'
+import { Box, Container, IconButton, SimpleGrid, Stack, Text } from '@chakra-ui/react'
 
-const StyledFooter = styled.footer`
-  background-color: var(--secondary);
-  padding: 4.8rem 0;
+const ListHeader = ({ children }) => {
+  return (
+    <Text fontWeight={'600'} fontSize={'lg'} mb={2}>
+      {children}
+    </Text>
+  );
+};
 
-  .footer__logo {
-    display: block;
-    color: var(--white);
-    font-family: var(--rubik);
-    font-size: 2rem;
-    font-weight: var(--fontWeight-bold);
-    margin-bottom: 2.4rem;
-  }
-  .copyright {
-    color: var(--white);
-    font-size: 1.4rem;
-    opacity: 0.75;
-  }
-`;
-
-const FooterInner = styled.div`
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: 2.4rem;
-
-  @media(min-width: ${variables.breakpoints.tablet}) {
-    grid-template-columns: 1fr 1fr;
-  }
-
-  @media(min-width: ${variables.breakpoints.desktop}) {
-    grid-template-columns: repeat(3, 1fr)
-  }
-`;
-
-const NavList = styled.ul`
-  color: var(--white);
-  font-size: 1.6rem;
-  h5 {
-    font-size: 1.6rem;
-    margin-bottom: 1.6rem;
-  }
-  li {
-    margin-bottom: 1.6rem;
-    display: flex;
-    align-items: center;
-    gap: 1.2rem;
-    opacity: 0.75;
-  }
-  img {
-    width: 2.4rem;
-    height: 2.4rem;
-  }
-`;
-
-const SocialIcons = styled.div`
-  display: flex;
-  gap: 2.4rem;
-`;
 
 export const Footer = () => {
   return (
-    <StyledFooter>
-      <Container>
-        <Link className="footer__logo" to="/">VW CAMPER</Link>
-        <FooterInner>
-          <NavList>
-            <h5>Company</h5>
-            {navigationLinks.map(link => (
-              <li key={link.title}>
-                <Link to={link.path}>{link.title}</Link>
-              </li>
-            ))}
-          </NavList>
+    <Box
+      bg={'gray.600'}
+      color={'white'}>
+      <Container as={Stack} maxW={'6xl'} py={10}>
+        <SimpleGrid columns={{ base: 1, sm: 2, md: 4 }} spacing={8}>
+          <Stack align={'flex-start'}>
+            <ListHeader>Company</ListHeader>
+            <a href={'#'}>About Us</a>
+            <a href={'#'}>Blog</a>
+            <a href={'#'}>Careers</a>
+            <a href={'#'}>Contact Us</a>
+          </Stack>
 
-          <NavList>
-            <h5>Legal</h5>
-            {termsAndConditions.map(link => (
-              <li key={link.title}>
-                <Link to={link.path}>{link.title}</Link>
-              </li>
-            ))}
-          </NavList>
+          <Stack align={'flex-start'}>
+            <ListHeader>Support</ListHeader>
+            <a href={'#'}>Help Center</a>
+            <a href={'#'}>Safety Center</a>
+            <a href={'#'}>Community Guidelines</a>
+          </Stack>
 
-          <NavList>
-            <h5>Find us</h5>
-            <SocialIcons>
-              {findUs.map(link => (
-                <a key={link.title} href={link.path}>
-                  <Icon src={link.icon} />
-                </a>
-              ))}
-            </SocialIcons>
-          </NavList>
+          <Stack align={'flex-start'}>
+            <ListHeader>Legal</ListHeader>
+            <a href={'#'}>Cookies Policy</a>
+            <a href={'#'}>Privacy Policy</a>
+            <a href={'#'}>Terms of Service</a>
+            <a href={'#'}>Law Enforcement</a>
+          </Stack>
 
-        </FooterInner>
-        <hr style={{ margin: '3.2rem 0' }} />
-        <p className="copyright">&copy; VW Camper {new Date().getFullYear()}. All rights reserved</p>
+          <Stack align={'flex-start'} direction="column">
+            <ListHeader>Find us</ListHeader>
+            <Stack direction="row">
+              <IconButton
+                colorScheme="blue"
+                aria-label="Search database"
+                icon={""}
+              />
+              <IconButton
+                colorScheme="blue"
+                aria-label="Search database"
+                icon={""}
+              />
+              <IconButton
+                colorScheme="blue"
+                aria-label="Search database"
+                icon={""}
+              />
+            </Stack>
+          </Stack>
+        </SimpleGrid>
       </Container>
-    </StyledFooter>
+
+      <Box
+        borderTopWidth={1}
+        borderStyle={'solid'}
+        borderColor={'white'}>
+        <Container
+          as={Stack}
+          maxW={'6xl'}
+          py={4}
+          direction={{ base: 'column', md: 'row' }}
+          spacing={4}
+          justify={{ md: 'space-between' }}
+          align={{ md: 'center' }}>
+          <Text>© 2020 VWCVCH LONDON. All rights reserved</Text>
+          <Stack direction={'row'} spacing={6}>
+            {/* <SocialButton label={'Twitter'} href={'#'}>
+              <FaTwitter />
+            </SocialButton>
+            <SocialButton label={'YouTube'} href={'#'}>
+              <FaYoutube />
+            </SocialButton>
+            <SocialButton label={'Instagram'} href={'#'}>
+              <FaInstagram />
+            </SocialButton> */}
+          </Stack>
+        </Container>
+      </Box>
+    </Box>
   )
 }
