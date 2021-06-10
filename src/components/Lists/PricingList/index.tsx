@@ -1,5 +1,6 @@
 import React from 'react'
-import styled from 'styled-components';
+import { useStaticQuery, graphql } from 'gatsby'
+import styled from 'styled-components'
 import { PricingCard } from 'components'
 import { variables } from 'styles/variables'
 
@@ -15,10 +16,22 @@ const StyledList = styled.div`
   }
 `;
 
-export const PricingList = ({ items }) => {
+export const PricingList = () => {
+  const { allGraphCmsPricing: { nodes } } = useStaticQuery(graphql`
+    query PricingQuery {
+      allGraphCmsPricing {
+        nodes {
+          title
+          subHeading
+        }
+      }
+    }
+  `)
+
+  console.log('data', nodes)
   return (
     <StyledList>
-      {items.map((item, index) => (
+      {nodes.map((item, index) => (
         <PricingCard key={index} {...item} />
       ))}
     </StyledList>

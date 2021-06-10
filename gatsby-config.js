@@ -1,4 +1,5 @@
 const path = require('path')
+require('dotenv').config()
 
 module.exports = {
   siteMetadata: {
@@ -36,6 +37,12 @@ module.exports = {
         styles: path.join(__dirname, "src/styles"),
         utils: path.join(__dirname, "src/utils"),
       }
+    },
+    {
+      resolve: 'gatsby-source-graphcms',
+      options: {
+        endpoint: process.env.GATSBY_GRAPHCMS,
+      },
     },
   ],
 }

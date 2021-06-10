@@ -16,7 +16,7 @@ import {
   TitleBanner,
   ItemsList,
   BusList,
-  // Popup
+  Popup
 } from 'components'
 import { buses, services, pricing, whatsIncluded, optionalExtras } from 'features'
 import { useGlobalContext } from 'context'
@@ -97,6 +97,7 @@ const Index = () => {
 
       <Hero />
 
+
       <Section isGrey>
         <Container>
           <TitleBanner title="Meet the buses" />
@@ -156,7 +157,7 @@ const Index = () => {
 
               <div className="info-column">
                 <Icon src={email} alt="" />
-                <a href="mailto:hire@vwcamper.com">01224392545</a>
+                <a href="mailto:hire@cvchlondon.co.uk">hire@cvchlondon.co.uk</a>
               </div>
             </div>
           </div>
@@ -186,7 +187,6 @@ const Index = () => {
               placeholder="Enter you name.."
               ref={register}
             />
-            {errors.name && <span>{errors.name.message}</span>}
             <Input
               type="text"
               label="Email*"

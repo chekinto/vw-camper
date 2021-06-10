@@ -47,27 +47,18 @@ const Bottom = styled.div`
 
 interface PricingCardProps {
   title: string;
-  season: string;
-  type: {
-    period: string;
-    price: number;
-  }[]
+  subHeading: string;
 }
 
-export const PricingCard: FunctionComponent<PricingCardProps> = ({ title, season, type }) => {
+export const PricingCard: FunctionComponent<PricingCardProps> = ({ title, subHeading }) => {
   return (
     <StyledPricingCard>
       <Top>
         <h4>{title}</h4>
-        <p>{season}</p>
+        <p>{subHeading}</p>
       </Top>
       <Bottom>
-        {type.map(t => (
-          <div className="pricing">
-            <p>{t.period}</p>
-            <p>{formatPrice(t.price)}</p>
-          </div>
-        ))}
+        bototm content
       </Bottom>
     </StyledPricingCard>
   )

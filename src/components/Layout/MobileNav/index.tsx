@@ -58,12 +58,20 @@ export const MobileNav: FunctionComponent<MobileNavProps> = ({ isOpen, setIsOpen
       <StyledMobileNav isOpen={isOpen}>
         <ul>
           <li>
-            <AnchorLink className="anchor__link" to="/#services" title="Services" onAnchorLinkClick={() => setIsOpen(false)}>
+            <AnchorLink
+              className="anchor__link"
+              to="/#services"
+              title="Services"
+              onAnchorLinkClick={() => setIsOpen(false)}>
               Services
             </AnchorLink>
           </li>
           <li>
-            <AnchorLink className="anchor__link" to="/#pricing" title="Pricing" onAnchorLinkClick={() => setIsOpen(false)}>
+            <AnchorLink
+              className="anchor__link"
+              to="/#pricing"
+              title="Pricing"
+              onAnchorLinkClick={() => setIsOpen(false)}>
               Pricing
             </AnchorLink>
           </li>

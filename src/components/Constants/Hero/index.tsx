@@ -1,9 +1,10 @@
-import React from 'react'
+import React from 'react';
+import { useStaticQuery, graphql } from 'gatsby';
 import styled, { keyframes } from 'styled-components';
-import { Button, Container } from 'components'
-import { Section } from 'components/Constants/Section'
+import { Button, Container } from 'components';
+import { Section } from 'components/Constants/Section';
 import camperVan from 'assets/images/vw-camper.png';
-import { variables } from 'styles/variables'
+import { variables } from 'styles/variables';
 
 const slideIn = keyframes`
   0% {
@@ -87,6 +88,15 @@ const HeroInner = styled.div`
 `;
 
 export const Hero = () => {
+  const { graphCmsHero } = useStaticQuery(graphql`
+    query HeroQuery {
+      graphCmsHero {
+        title
+        subHeading
+      }
+    }   
+  `)
+
   return (
     <HeroSection>
       <Container>
@@ -96,15 +106,12 @@ export const Hero = () => {
           </HeroImage>
 
           <HeroContent>
-            <h1>Retro Style, <br />modern comfort</h1>
-            <p>
-              Whatever the occasion we have you covered. Here at VW Camper we aim to provide first class van hire every time.
-            </p>
+            <h1>{graphCmsHero.title}</h1>
+            <p>{graphCmsHero.subHeading}</p>
             <Button large secondary>Book now</Button>
           </HeroContent>
         </HeroInner>
       </Container>
-    </HeroSection >
-
+    </HeroSection>
   )
 }

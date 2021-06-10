@@ -33,7 +33,7 @@ export const GlobalStyles = createGlobalStyle`
     font-style: normal;
     font-display: swap;
   }
-  
+
   *,
   *::before,
   *::after {
@@ -71,7 +71,7 @@ export const GlobalStyles = createGlobalStyle`
   }
 
   body {
-    font-family: 'Inter', ---apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif;
+    font-family: ---apple-system, BlinkMacSystemFont, 'Open Sans', sans-serif;
     height: 100%;
   }
 

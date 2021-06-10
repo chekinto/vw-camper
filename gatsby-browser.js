@@ -1,12 +1,13 @@
 import React from 'react'
-import { GlobalStyles } from 'styles/global'
+// import { GlobalStyles } from 'styles/global'
 import { Layout } from 'components/Layout'
+import { ChakraProvider } from "@chakra-ui/react"
 import { AppContextProvider } from 'context'
 
 export const wrapPageElement = ({ element, props }) => {
   return (
     <>
-      <GlobalStyles />
+      {/* <GlobalStyles /> */}
       <Layout {...props}>{element}</Layout>
     </>
   )
@@ -14,8 +15,10 @@ export const wrapPageElement = ({ element, props }) => {
 
 export const wrapRootElement = ({ element }) => {
   return (
-    <AppContextProvider>
-      {element}
-    </AppContextProvider>
+    <ChakraProvider>
+      <AppContextProvider>
+        {element}
+      </AppContextProvider>
+    </ChakraProvider>
   )
 }
