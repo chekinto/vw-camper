@@ -1,6 +1,7 @@
 import React from 'react'
 import { Layout } from 'components/Layout'
-import { ChakraProvider } from "@chakra-ui/react"
+import { ChakraProvider } from '@chakra-ui/react'
+import { theme } from 'config/chakra'
 import { AppContextProvider } from 'context'
 
 export const wrapPageElement = ({ element, props }) => {
@@ -13,7 +14,7 @@ export const wrapPageElement = ({ element, props }) => {
 
 export const wrapRootElement = ({ element }) => {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <AppContextProvider>
         {element}
       </AppContextProvider>

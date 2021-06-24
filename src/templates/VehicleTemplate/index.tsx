@@ -1,9 +1,7 @@
 import React, { FunctionComponent, useState, useEffect } from 'react'
-import { Container } from 'components'
-import { buses } from 'features'
-import './styles.css'
+import { Container } from '@chakra-ui/react'
 
-interface Props {
+interface PageProps {
   pageContext: {
     slug: string;
   }
@@ -18,7 +16,7 @@ interface Props {
 //   isReversed?: boolean;
 // }
 
-const VehicleTemplate: FunctionComponent<Props> = ({ pageContext }) => {
+const VehicleTemplate: FunctionComponent<PageProps> = ({ pageContext }) => {
   console.log('pageContext', pageContext)
   // const [vehicle, setVehicle] = useState<VehicleProps>({
   //   title: '',
@@ -39,14 +37,8 @@ const VehicleTemplate: FunctionComponent<Props> = ({ pageContext }) => {
   // const { title, content, image } = vehicle;
 
   return (
-    <Container style={{ marginTop: '9.4rem' }}>
-      <div className="vehicle--grid">
-        <div>
-          <h1 className="capitalize">TEST</h1>
-          <p>AOXPOWX</p>
-        </div>
-        {/* <img src={image} alt={`${title}`} /> */}
-      </div>
+    <Container>
+      SINGLE VEHICLE PAGE
     </Container>
   )
 }

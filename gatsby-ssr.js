@@ -1,20 +1,20 @@
 import React from 'react'
 import { Layout } from 'components/Layout'
-import { AppContextProvider } from 'src/context'
+import { ChakraProvider } from '@chakra-ui/react'
+import { theme } from 'config/chakra'
+import { AppContextProvider } from 'context'
 
 export const wrapPageElement = ({ element, props }) => {
   return (
     <>
-      <Layout {...props}>
-        {element}
-      </Layout>
+      <Layout {...props}>{element}</Layout>
     </>
   )
 }
 
 export const wrapRootElement = ({ element }) => {
   return (
-    <ChakraProvider>
+    <ChakraProvider theme={theme}>
       <AppContextProvider>
         {element}
       </AppContextProvider>

@@ -4,67 +4,46 @@ exports.createPages = ({ graphql, actions }) => {
   const { createPage } = actions;
 
   return graphql(`
-    query HeroQuery {
-      allGraphCmsBus {
-        nodes {
-          description
+    query {
+      graphcms {
+        services {
+          id
           title
+          slug
+        }
+
+        busPages {
+          name
+          description
+          slug
         }
       }
     }
-  `).then((result) => {
+  `).then(result => {
     if (result.errors) {
       throw result.errors
     }
 
-    result.data.allGraphCmsBus.nodes.map(node => {
+    result.data.graphcms.busPages.map(node => {
       createPage({
-        path: `meet-the-buses/ada`,
+        path: `meet-the-buses/${node.slug}`,
         component: path.resolve('./src/templates/VehicleTemplate/index.tsx'),
         context: {
-          slug: 'ada'
+          id: node.id,
+          slug: node.slug
         }
       })
     })
-  });
 
-
-  // const services = [
-  //   {
-  //     name: 'Camping & Festivals',
-  //     slug: 'camping-and-festivals'
-  //   },
-  //   {
-  //     name: 'Parties & Proms',
-  //     slug: 'parties-and-proms'
-  //   },
-  //   {
-  //     name: 'Weddings',
-  //     slug: 'weddings'
-  //   },
-  //   {
-  //     name: 'Other',
-  //     slug: 'other'
-  //   },
-  // ]
-
-  // campers.map(camper => {
-  //   createPage({
-  //     path: `meet-the-buses/${camper.name}`,
-  //     component: path.resolve('./src/templates/VehicleTemplate/index.tsx'),
-  //     context: {
-  //       name: camper.name
-  //     }
-  //   })
-  // })
-
-  // services.map(service => {
-  //   createPage({
-  //     path: `services/${service.slug}`,
-  //     component: path.resolve('./src/templates/ServiceTemplate/index.tsx'),
-  //     context: {
-  //       slug: service.slug
-  //     }
-  //   })
-  // })
+    result.data.graphcms.services.map(node => {
+      createPage({
+        path: `services/${node.slug}`,
+        component: path.resolve('./src/templates/ServiceTemplate/index.tsx'),
+        context: {
+          id: node.id,
+          slug: node.slug
+        }
+      })
+    })
+  })
 }

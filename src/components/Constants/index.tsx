@@ -1,3 +1,2 @@
-export * from './ContactForm'
 export * from './HeaderScripts'
-export * from './Hero'
+export * from './Wrapper'
